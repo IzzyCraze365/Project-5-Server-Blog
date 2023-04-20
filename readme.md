@@ -36,11 +36,11 @@ Create a `controllers` folder which will store your `routes.js` file. This is wh
 
 You should have the following routes:
 
-- [ ] Endpoint that will display all comments from the database. In lieu of database, we use our `blog.json` file.
-- [ ] Endpoint that will display one comment from the database selected by its `post_id`
-- [ ] Endpoint that will allow us to create a new entry which will be appended to the `.json` file's outermost array.
-- [ ] Endpoint that will allow us to update an existing entry once a match has been found. The search should be done via a query parameter, whereas update information should be enclosed within the body.
-- [ ] Endpoint that will allow us to delete an entry from our `.json` file. This should be done thru the utilization of the parameter.
+- [ `GET` ] Endpoint that will display all comments from the database. In lieu of database, we use our `blog.json` file.
+- [ `GET` ] Endpoint that will display one comment from the database selected by its `post_id`
+- [ `POST` ] Endpoint that will allow us to create a new entry which will be appended to the `.json` file's outermost array.
+- [ `PATCH` ] Endpoint that will allow us to update an existing entry once a match has been found. The search should be done via a query parameter, whereas update information should be enclosed within the body.
+- [ `DELETE` ] Endpoint that will allow us to delete an entry from our `.json` file. This should be done thru the utilization of the parameter.
 
 ## Logic
 
@@ -60,4 +60,4 @@ Make sure that your completed design sends a response back to the client with ap
 
 - [ ] Existing setup requires us to keep track of the `post_id`. In your entry creation route, create a feature that will check where your makeshift db is in terms of its id's and creates a new one for each entry. Don't overthink it. A simple counter-style 1, 2, 3 is sufficient.
 
-- [ ] If you're feeling extra confident, create static files that will serve up the content to the user using DOM and fetch to retrieve the data from the server. These files are then served by ALL blog posts endpoint as well as ONE blog post endpoint.
+- [ `query parameters`] If you're feeling extra confident, create static files that will serve up the content to the user using DOM and fetch to retrieve the data from the server. These files are then served by ALL blog posts endpoint as well as ONE blog post endpoint.
