@@ -7,6 +7,7 @@ const dbPath = "./api/blog.json"; // dbPath = file path of our json in relation 
 const fs = require("fs"); // FS gives us access to the file system that is built-in with node
 const { v4: uuidv4 } = require("uuid"); // Provides us with "Universal Unique Identifier" for our posts
 
+// Here are my Object Keys
 // post_id	title	author	body
 
 //! http://localhost:4000/routes/test

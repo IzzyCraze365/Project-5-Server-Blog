@@ -1,0 +1,139 @@
+<!--  Project: Week 5 -->
+<!-- Blog Server -->
+<!-- John Isabella III -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>John's Blog</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">John's Blog Posts</header>
+    <table>
+      <thead>
+        <tr>
+          <th>POST #</th>
+          <th>TITLE</th>
+          <th>AUTHOR</th>
+          <th>POST ID</th>
+          <th>POST</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add Blog Post Data Here -->
+        <tr>
+          <td>0</td>
+          <td>HTML Test</td>
+          <td>John</td>
+          <td>This is a Test for HTML</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="column">
+      <!--  Add Blog Post Form -->
+      <div class="form-container">
+        <h2>Post A Comment</h2>
+        <form>
+          <!-- Form Field -->
+          <label for="title">Title: </label>
+          <input
+            type="text"
+            id="title"
+            placeholder="Enter Title..."
+            name="title"
+          />
+          <!-- Form Field End -->
+
+          <!-- Form Field -->
+          <label for="author">Author: </label>
+          <input
+            type="text"
+            id="author"
+            placeholder="Enter your name..."
+            name="author"
+          />
+          <!-- Form Field End -->
+
+          <!-- Form Field -->
+          <label for="body">Body: </label>
+          <input
+            type="text"
+            id="body"
+            placeholder="Enter comments here."
+            name="body"
+          />
+          <!-- Form Field End -->
+
+          <!-- SUBMIT BUTTON -->
+          <input type="submit" value="POST" />
+        </form>
+      </div>
+           <!-- Update Post Form -->
+           <div class="form-container">
+            <form id="edit-post-form">
+              <h2>Edit Blog Post</h2>
+              <!-- Select Option Box -->
+              <label for="post-select">Edit Post: </label>
+              <select name="post" class="post-select" id="editForm">
+                <option value="0">Trever Striker</option>
+                <option value="1">Simon Davis</option>
+              </select>
+              <!-- Form Field -->
+              <label for="title">Title: </label>
+              <input
+                type="text"
+                id="title"
+                placeholder="Enter Title..."
+                name="title"
+              />
+              <!-- Form Field End -->
+    
+              <!-- Form Field -->
+              <label for="author">Author: </label>
+              <input
+                type="text"
+                id="author"
+                placeholder="Enter your name..."
+                name="author"
+              />
+              <!-- Form Field End -->
+    
+              <!-- Form Field -->
+              <label for="body">Body: </label>
+              <input
+                type="text"
+                id="body"
+                placeholder="Enter comments here."
+                name="body"
+              />
+              <!-- Form Field End -->
+              <!-- SUBMIT FOR DELETE BUTTON -->
+              <input type="submit" value="UPDATE" />
+            </form>
+          </div>
+        </div>
+      <!-- Delete Blog Post Form -->
+      <div class="form-container">
+        <form id="remove-post-form">
+          <h2>Delete Blog Post</h2>
+          <!-- Select Option Box -->
+          <label for="post-select">Remove Post: </label>
+          <select name="post" class="post-select" id="deleteForm">
+            <option value="0">Trever Striker</option>
+            <option value="1">Simon Davis</option>
+          </select>
+
+          <!-- SUBMIT FOR DELETE BUTTON -->
+          <input type="submit" value="DELETE BLOG POST" />
+        </form>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
