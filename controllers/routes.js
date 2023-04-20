@@ -55,6 +55,19 @@ router.get("/view-all", (req, res) => { // View all Posts
   }
 });
 
+//! http://localhost:4000/routes/view-one
+// Endpoint will display one comment from the database selected by post_id
+router.get("/view-one/:id", (req, res) => { // View 1 Posts
+    let blogPostArray = read();
+    try {
+      let id = req.params.id; // Viewed by specific ID
+      let index = blogPostArray.findIndex((blogPost) => blogPost.post_id == id);
+      res.json({ message: "Single Blog Post", blogPost: blogPostArray[index] });
+    } catch (error) {
+      res.json({ message: error.message });
+    }
+  });
+
 //! http://localhost:4000/routes/delete/:id
 router.delete("/delete/:id", (req, res) => { // Delete a Post
   let blogPostArray = read();
@@ -74,7 +87,7 @@ router.delete("/delete/:id", (req, res) => { // Delete a Post
 
 //! http://localhost:4000/routes/update/?id=[uuid]
 // Endpoint that will allow us to update an existing entry once a match has been found. The search should be done via a query parameter, whereas update information should be enclosed within the body.
-router.patch("/update/", (req, res) => { // Edit a Blog Post
+router.patch("/update/:id", (req, res) => { // Edit a Blog Post
   let blogPostArray = read();
 
   try {
@@ -86,13 +99,18 @@ router.patch("/update/", (req, res) => { // Edit a Blog Post
         body: body,
     };
 
-    let id = req.query.id; 
+    let id = req.params.id; 
     let index = blogPostArray.findIndex((blogPost) => blogPost.post_id == id); // Assign an index value based on ID
-
-    blogPostArray = updateOne(+index, blogPostObject, blogPostArray); // Update the array
+    console.log("Array Before", blogPostArray.length); //! TEST
+    blogPostArray = updateOne(index, blogPostObject, blogPostArray); // Update the array
     save(blogPostArray); // Save the array
-
+    console.log("Array After", blogPostArray.length);//! TEST
+    
     res.json({ message: "Blog Post has been Edited", blogPost: blogPostArray });
+
+    console.log("Index =", index); //! TEST
+    console.log("Post ID =", blogPost.post_id); //! TEST
+
   } catch (error) {
     res.json({ message: error.message });
   }
@@ -100,11 +118,11 @@ router.patch("/update/", (req, res) => { // Edit a Blog Post
 
 //! FUNCTION LIST (Alphabetical)
 
-function findOne(postID) {
-    for (let i = 0; i < blogPostArray.length; i++) {
-      if (postID === blogPostArray[i].post_id) {
+function findOne(postID, myArray) {
+    for (let i = 0; i < myArray.length; i++) {
+      if (postID === myArray[i].post_id) {
         //console.log(usersArray[i]); //! TEST
-        return blogPostArray[i];
+        return myArray[i];
       }
     }
     return {}; // Return an empty object IF the email does not match)

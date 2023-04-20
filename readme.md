@@ -4,21 +4,21 @@ In this project, you will create a backend of a blog application, utilizing Mode
 
 # Technologies:
 
-* Node
-* Express
-* Dotenv
+* Node (`done`)
+* Express (`done`)
+* Dotenv (`done`)
 
 # Stories
 
 ## Create your project
 
-Utilize `npm init -y` to create your project.
+Utilize `npm init -y` to create your project. (`done`)
 
-Install your `express`, `nodemon`, and `dotenv` dependencies.
+Install your `express`, `nodemon`, and `dotenv` dependencies. (`done`)
 
-Create your `app.js` file which will contain your entry points. I already created a `.gitignore` for your convenience and filled it with node modules and your environment variable.
+Create your `app.js` file which will contain your entry points. I already created a `.gitignore` for your convenience and filled it with node modules and your environment variable. (`done`)
 
-Create an `api` folder which will hold `blog.json` file. The file should contain the following data schematic:
+Create an `api` folder which will hold `blog.json` file. The file should contain the following data schematic: (`done`)
 
 ```json
 [
@@ -30,11 +30,11 @@ Create an `api` folder which will hold `blog.json` file. The file should contain
     }
 ]
 ```
-Create a `controllers` folder which will store your `routes.js` file. This is where you will create all of your endpoints to handle full CRUD functionality.
+Create a `controllers` folder which will store your `routes.js` file. This is where you will create all of your endpoints to handle full CRUD functionality. (`done`)
 
 ## System Design
 
-You should have the following routes:
+You should have the following routes: (`done`)
 
 - [ `GET` ] Endpoint that will display all comments from the database. In lieu of database, we use our `blog.json` file.
 - [ `GET` ] Endpoint that will display one comment from the database selected by its `post_id`
@@ -46,7 +46,7 @@ You should have the following routes:
 
 At this point, we have not yet covered databases. This presents a challenge when we need to make modifications to our `.json` file. The file itself acts as a makeshift database. These changes can be accomplished quite effectively through the use of the `fs` dependency. 
 
-In order to accomplish this task, you will need to import your `fs` dependency into your controller.
+In order to accomplish this task, you will need to import your `fs` dependency into your controller. (`done`)
 
 > HINT
 > FS methods require two parameters: a string of file location, and a callback function taking error and data parameters.
@@ -58,6 +58,6 @@ Make sure that your completed design sends a response back to the client with ap
 
 ## Icebox
 
-- [ x ] Existing setup requires us to keep track of the `post_id`. In your entry creation route, create a feature that will check where your makeshift db is in terms of its id's and creates a new one for each entry. Don't overthink it. A simple counter-style 1, 2, 3 is sufficient.
+- [ x ] Existing setup requires us to keep track of the `post_id`. In your entry creation route, create a feature that will check where your makeshift db is in terms of its id's and creates a new one for each entry. Don't overthink it. A simple counter-style 1, 2, 3 is sufficient. (`done`)
 
 - [ `query parameters`] If you're feeling extra confident, create static files that will serve up the content to the user using DOM and fetch to retrieve the data from the server. These files are then served by ALL blog posts endpoint as well as ONE blog post endpoint.
