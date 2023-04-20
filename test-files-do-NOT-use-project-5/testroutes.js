@@ -60,11 +60,11 @@ router.delete("/delete/:id", (req, res) => { // Delete a Post
   let blogPostArray = read();
   try {
     let id = req.params.id; // Deleted by specific ID
-    console.log("Blog Post Length before removal",blogPostArray.length); //! TEST
-    let index = blogPostArray.findIndex((blogPost) => blogPost.post_id == id);
+    console.log(blogPostArray.length);
+    let index = blogPostArray.findIndex((blogPost) => blogPost._id == id);
 
     blogPostArray = removeOne(index, blogPostArray);
-    console.log("Blog Post Length after removal",blogPostArray.length); //! TEST
+    console.log(blogPostArray.length);
     save(blogPostArray);
     res.json({ message: "Blog Post Removed", blogPost: blogPostArray });
   } catch (error) {
@@ -87,7 +87,7 @@ router.patch("/update/", (req, res) => { // Edit a Blog Post
     };
 
     let id = req.query.id; 
-    let index = blogPostArray.findIndex((blogPost) => blogPost.post_id == id); // Assign an index value based on ID
+    let index = blogPostArray.findIndex((blogPost) => blogPost._id == id); // Assign an index value based on ID
 
     blogPostArray = updateOne(+index, blogPostObject, blogPostArray); // Update the array
     save(blogPostArray); // Save the array
