@@ -96,14 +96,14 @@ router.patch("/update/:id", (req, res) => {
   let blogPostArray = read();
   try {
     const { post_id, title, author, body } = req.body; // Keys out of req.body
+    let id = req.params.id; // declare ID before using it
     const blogPostObject = {
       // posts are Objects
-      post_id: uuidv4(),
+      post_id: id, // This is to preserve the ID as it is being edited
       title: title.toUpperCase(),
       author: author,
       body: body,
     };
-    let id = req.params.id;
     let index = blogPostArray.findIndex((blogPost) => blogPost.post_id == id); // Assign an index value based on ID
     blogPostArray = updateOne(index, blogPostObject, blogPostArray); // Update the array
     save(blogPostArray); // Save the array

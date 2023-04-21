@@ -108,3 +108,50 @@ let requestOptions = {
     console.error(error);
   }
 }
+
+let editPostForm = document.querySelector("#edit-post-form");
+editPostForm.addEventListener("submit", submitForEdit);
+
+async function submitForEdit(e) {
+  e.preventDefault();
+  try {
+    let postEditIndex = editPost.value;
+    let formData = new FormData(e.target);
+    let json = JSON.stringify(Object.fromEntries(formData));
+    let url = `http://localhost:4000/routes/update/${postEditIndex}`; // URL from postman
+    let myHeaders = new Headers(); // create header Object
+    myHeaders.append("Content-Type", "application/json"); // append content
+    let requestOptions = { // requesting Object parameters
+      method: "PATCH",
+      body: json,
+      headers: myHeaders,
+    };
+    await fetch(url, requestOptions); // fetch request
+    getAllPosts(); // posting to table
+    blogPostForm.reset() // clear the form values
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+/* 
+  try {
+    let json = JSON.stringify(Object.fromEntries(formData));
+let postEditIndex = editPost.value;
+console.log(editPost, "Update Post");
+console.log("Editing Post", postEditIndex);
+console.log(editPost.title, "Updated title");
+let url = `http://localhost:4000/routes/update/${postEditIndex}`; // URL from postman
+let requestOptions = {
+  method: "PATCH",
+}
+  const response = await fetch(url, requestOptions);
+  const data = await response.json();
+  console.log("Here be Data",data);
+    getAllPosts();
+    console.log("get All Posts",getAllPosts);//! TEST
+  } catch (error) {
+    console.error(error);
+  }
+ */
