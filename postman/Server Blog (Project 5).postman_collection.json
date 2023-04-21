@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "189daf62-8cc7-4047-a744-69a935d1d68c",
+		"name": "Server Blog (Project 5)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26874299"
+	},
+	"item": [
+		{
+			"name": "Blog Post - View All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/routes/view-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"routes",
+						"view-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Blog Post - Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"title\": \"Grading\",\r\n        \"author\": \"Mary & Henry\",\r\n        \"body\": \"You suck, John\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/routes/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"routes",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Blog Post - Update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n            \"post_id\": \"c76dea1c-e2f6-4565-964b-965b4915ebf7\",\r\n            \"title\": \"GRADING\",\r\n            \"author\": \"Mary & Henry\",\r\n            \"body\": \"You don't suck, John\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/routes/update/:id?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"routes",
+						"update",
+						":id"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "c76dea1c-e2f6-4565-964b-965b4915ebf7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Blog Post - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"title\": \"Test post\",\r\n        \"author\": \"John Isabella\",\r\n        \"body\": \"I am trying to get this blog to work\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/routes/delete/:id?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"routes",
+						"delete",
+						":id"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "b9d717a9-a846-4c5a-8018-a7d27a85a587"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Blog Post - View One",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/routes/view-one/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"routes",
+						"view-one",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Blog Post - Test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
