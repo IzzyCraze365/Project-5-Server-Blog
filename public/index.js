@@ -9,7 +9,7 @@ let postSelectElement = document.querySelectorAll(".post-select");
 let deletePost = document.querySelector("#deleteForm");
 console.log(deletePost);
 let editPost = document.querySelector("#editForm");
-
+let onePost = document.querySelector("#oneForm");
 
 function displayBlogPosts(blogPostArray) {
   // Clear out the INNERHTML of the tbody
@@ -38,14 +38,15 @@ function tableDataBuilder(tableRow, blogPostDataToDisplay) {
 }
 
 // Posts Dropdown Options (Delete & Edit)
-function populatePostsDropDown(blogPostArray){
+function populatePostsDropDown(blogPostArray) {
   let htmlString = "";
-  for (let i = 0; i< blogPostArray.length; i++){
-    htmlString += `<option value="${blogPostArray[i].post_id}">${blogPostArray[i].post_id}</option>`
+  for (let i = 0; i < blogPostArray.length; i++) {
+    htmlString += `<option value="${blogPostArray[i].post_id}">${blogPostArray[i].title}</option>`;
   }
-  postSelectElement.forEach((select)=>{ // I have 2 blogPostArrays, need to change both of them
+  postSelectElement.forEach((select) => {
+    // I have 2 blogPostArrays, need to change both of them
     select.innerHTML = htmlString;
-  })
+  });
 }
 
 async function getAllPosts() {
@@ -73,14 +74,33 @@ async function submitNewPost(e) {
     let url = "http://localhost:4000/routes/add"; // the url for the fetch
     let myHeaders = new Headers(); // create header Object
     myHeaders.append("Content-Type", "application/json"); // append content
-    let requestOptions = { // requesting Object parameters
+    let requestOptions = {
+      // requesting Object parameters
       method: "POST",
       body: json,
       headers: myHeaders,
     };
     await fetch(url, requestOptions); // fetch request
     getAllPosts(); // posting to table
-    blogPostForm.reset() // clear the form values
+    blogPostForm.reset(); // clear the form values
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+let onePostForm = document.querySelector("#one-post-form");
+onePostForm.addEventListener("submit", viewOnePost);
+
+async function viewOnePost(e) {
+  e.preventDefault();
+  try {
+    let postIndex = onePost.value;
+    console.log(onePost, "View One Post");
+    console.log("Viewing Only One Post", postIndex);
+    let url = `http://localhost:4000/routes/view-one/${postIndex}`; // URL from postman
+    console.log("Post Index", postIndex);
+    console.log("One Post", onePost);
+    window.location.href = `./page2.html?postid=${postIndex}`; // Send the ID data onto a new page.  That way it can be pulled to use
   } catch (error) {
     console.error(error);
   }
@@ -92,18 +112,18 @@ removePostForm.addEventListener("submit", submitForRemoval);
 async function submitForRemoval(e) {
   e.preventDefault();
   try {
-let postIndex = deletePost.value;
-console.log(deletePost, "Delete Post")
-console.log("Deleting Post", postIndex)
-let url = `http://localhost:4000/routes/delete/${postIndex}`; // URL from postman
-let requestOptions = {
-  method: "DELETE",
-}
-  const response = await fetch(url, requestOptions);
-  const data = await response.json();
-  console.log(data);
+    let postIndex = deletePost.value;
+    console.log(deletePost, "Delete Post");
+    console.log("Deleting Post", postIndex);
+    let url = `http://localhost:4000/routes/delete/${postIndex}`; // URL from postman
+    let requestOptions = {
+      method: "DELETE",
+    };
+    const response = await fetch(url, requestOptions);
+    const data = await response.json();
+    console.log(data);
     getAllPosts();
-    console.log("get All Posts",getAllPosts);//! TEST
+    console.log("get All Posts", getAllPosts); //! TEST
   } catch (error) {
     console.error(error);
   }
@@ -121,37 +141,16 @@ async function submitForEdit(e) {
     let url = `http://localhost:4000/routes/update/${postEditIndex}`; // URL from postman
     let myHeaders = new Headers(); // create header Object
     myHeaders.append("Content-Type", "application/json"); // append content
-    let requestOptions = { // requesting Object parameters
+    let requestOptions = {
+      // requesting Object parameters
       method: "PATCH",
       body: json,
       headers: myHeaders,
     };
     await fetch(url, requestOptions); // fetch request
     getAllPosts(); // posting to table
-    blogPostForm.reset() // clear the form values
+    blogPostForm.reset(); // clear the form values
   } catch (error) {
     console.error(error);
   }
 }
-
-
-/* 
-  try {
-    let json = JSON.stringify(Object.fromEntries(formData));
-let postEditIndex = editPost.value;
-console.log(editPost, "Update Post");
-console.log("Editing Post", postEditIndex);
-console.log(editPost.title, "Updated title");
-let url = `http://localhost:4000/routes/update/${postEditIndex}`; // URL from postman
-let requestOptions = {
-  method: "PATCH",
-}
-  const response = await fetch(url, requestOptions);
-  const data = await response.json();
-  console.log("Here be Data",data);
-    getAllPosts();
-    console.log("get All Posts",getAllPosts);//! TEST
-  } catch (error) {
-    console.error(error);
-  }
- */
